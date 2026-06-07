@@ -7,7 +7,10 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 // Connect to database
-connectDB();
+connectDB().then(() => {
+  const autoSeed = require('./utils/autoSeed');
+  autoSeed();
+});
 
 const app = express();
 
