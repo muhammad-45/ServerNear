@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { FiUser, FiMail, FiLock, FiPhone, FiMapPin, FiArrowRight } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import API from '../utils/api';
+import logo from '../assets/logo.svg';
 import './Auth.css';
 
 const Register = () => {
@@ -90,7 +91,7 @@ const Register = () => {
       <div className="auth-container" style={{ maxWidth: formData.role === 'provider' ? '1000px' : '900px' }}>
         <div className="auth-left">
           <div className="auth-left-content">
-            <img src="/logo.svg" alt="ServeNear" className="auth-logo" />
+            <img src={logo} alt="ServeNear" className="auth-logo" />
             <h2>Join ServeNear</h2>
             <p>Create an account to start booking services or offering your skills to customers across Pakistan.</p>
             <div className="auth-features">

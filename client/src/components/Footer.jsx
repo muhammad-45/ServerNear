@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FiMapPin, FiPhone, FiMail, FiHeart } from 'react-icons/fi';
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import logo from '../assets/logo.svg';
 import './Footer.css';
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <img src="/logo.svg" alt="ServeNear" className="footer-logo" />
+            <img src={logo} alt="ServeNear" className="footer-logo" />
             <p className="footer-desc">
               Connecting you with trusted local service providers across Pakistan. 
               Quality services at your doorstep.

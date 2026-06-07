@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import logo from '../assets/logo.svg';
 import './Auth.css';
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
       <div className="auth-container">
         <div className="auth-left">
           <div className="auth-left-content">
-            <img src="/logo.svg" alt="ServeNear" className="auth-logo" />
+            <img src={logo} alt="ServeNear" className="auth-logo" />
             <h2>Welcome Back</h2>
             <p>Sign in to access your account and manage your bookings.</p>
             <div className="auth-features">

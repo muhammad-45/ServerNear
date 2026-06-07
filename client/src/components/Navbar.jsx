@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FiMenu, FiX, FiUser, FiLogOut, FiGrid, FiCalendar, FiSettings } from 'react-icons/fi';
+import logo from '../assets/logo.svg';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
     <nav className="navbar" id="main-navbar">
       <div className="container navbar-container">
         <Link to="/" className="navbar-brand" id="nav-brand">
-          <img src="/logo.svg" alt="ServeNear" className="navbar-logo" />
+          <img src={logo} alt="ServeNear" className="navbar-logo" />
         </Link>
 
         <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
