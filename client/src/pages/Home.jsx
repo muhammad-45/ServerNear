@@ -68,12 +68,12 @@ const Home = () => {
 
             <div className="hero-stats">
               <div className="hero-stat">
-                <span className="hero-stat-number">500+</span>
+                <span className="hero-stat-number">10+</span>
                 <span className="hero-stat-label">Providers</span>
               </div>
               <div className="hero-stat-divider"></div>
               <div className="hero-stat">
-                <span className="hero-stat-number">1000+</span>
+                <span className="hero-stat-number">10+</span>
                 <span className="hero-stat-label">Services</span>
               </div>
               <div className="hero-stat-divider"></div>
