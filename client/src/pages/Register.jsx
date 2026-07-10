@@ -44,7 +44,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (formData.password !== formData.confirmPassword) {
       return toast.error('Passwords do not match.');
     }
@@ -73,11 +73,11 @@ const Register = () => {
 
       const data = await register(userData);
       toast.success(data.message || 'Registration successful!');
-      
+
       if (formData.role === 'provider') {
         toast.info('Your account will be verified by admin before your services appear.');
       }
-      
+
       navigate('/');
     } catch (error) {
       toast.error(error.response?.data?.message || 'Registration failed.');
@@ -95,10 +95,10 @@ const Register = () => {
             <h2>Join ServeNear</h2>
             <p>Create an account to start booking services or offering your skills to customers across Pakistan.</p>
             <div className="auth-features">
-              <div className="auth-feature">🛡️ Verified & Trusted</div>
-              <div className="auth-feature">📍 Local Coverage</div>
-              <div className="auth-feature">💰 Fair Pricing</div>
-              <div className="auth-feature">⭐ Quality Service</div>
+              <div className="auth-feature">Verified & Trusted</div>
+              <div className="auth-feature">Local Coverage</div>
+              <div className="auth-feature">Fair Pricing</div>
+              <div className="auth-feature">Quality Service</div>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ const Register = () => {
 
             {/* Role Selection */}
             <div className="role-selector" style={{ marginBottom: 'var(--space-6)' }}>
-              <div 
+              <div
                 className={`role-option ${formData.role === 'customer' ? 'active' : ''}`}
                 onClick={() => setFormData({ ...formData, role: 'customer' })}
                 id="role-customer"
@@ -119,7 +119,7 @@ const Register = () => {
                 <span className="role-option-label">Customer</span>
                 <span className="role-option-desc">Find & book services</span>
               </div>
-              <div 
+              <div
                 className={`role-option ${formData.role === 'provider' ? 'active' : ''}`}
                 onClick={() => setFormData({ ...formData, role: 'provider' })}
                 id="role-provider"

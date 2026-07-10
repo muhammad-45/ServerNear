@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../utils/api';
 import Loader from '../components/Loader';
-import { FiUsers, FiPackage, FiCalendar, FiDollarSign, FiCheckCircle, FiClock, FiGrid, FiUserCheck } from 'react-icons/fi';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import { toast } from 'react-toastify';
@@ -68,42 +67,34 @@ const AdminDashboard = () => {
         {/* Stats Grid */}
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(42,157,143,0.1)', color: '#2A9D8F' }}><FiUsers /></div>
             <span className="stat-card-value">{stats.totalUsers}</span>
             <span className="stat-card-label">Total Users</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(69,123,157,0.1)', color: '#457B9D' }}><FiUserCheck /></div>
             <span className="stat-card-value">{stats.verifiedProviders}/{stats.totalProviders}</span>
             <span className="stat-card-label">Verified Providers</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(233,196,106,0.15)', color: '#E9C46A' }}><FiPackage /></div>
             <span className="stat-card-value">{stats.totalServices}</span>
             <span className="stat-card-label">Total Services</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(38,70,83,0.08)', color: '#264653' }}><FiCalendar /></div>
             <span className="stat-card-value">{stats.totalBookings}</span>
             <span className="stat-card-label">Total Bookings</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(42,157,143,0.1)', color: '#2A9D8F' }}><FiDollarSign /></div>
             <span className="stat-card-value">PKR {stats.totalRevenue?.toLocaleString()}</span>
             <span className="stat-card-label">Revenue (Completed)</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(231,111,81,0.1)', color: '#E76F51' }}><FiClock /></div>
             <span className="stat-card-value">{stats.pendingProviders}</span>
             <span className="stat-card-label">Pending Verifications</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(42,157,143,0.1)', color: '#2A9D8F' }}><FiGrid /></div>
             <span className="stat-card-value">{stats.totalCategories}</span>
             <span className="stat-card-label">Categories</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(69,123,157,0.1)', color: '#457B9D' }}><FiCheckCircle /></div>
             <span className="stat-card-value">{stats.bookingStatus.completed}</span>
             <span className="stat-card-label">Completed Jobs</span>
           </div>
@@ -124,15 +115,12 @@ const AdminDashboard = () => {
         {/* Quick Links */}
         <div className="stats-grid">
           <Link to="/admin/providers" className="stat-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-            <FiUserCheck size={24} style={{ color: 'var(--color-primary-light)', marginBottom: '8px' }} />
             <span className="stat-card-label" style={{ fontWeight: 600, color: 'var(--color-text)' }}>Manage Providers →</span>
           </Link>
           <Link to="/admin/categories" className="stat-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-            <FiGrid size={24} style={{ color: 'var(--color-primary-light)', marginBottom: '8px' }} />
             <span className="stat-card-label" style={{ fontWeight: 600, color: 'var(--color-text)' }}>Manage Categories →</span>
           </Link>
           <Link to="/admin/users" className="stat-card" style={{ textDecoration: 'none', cursor: 'pointer' }}>
-            <FiUsers size={24} style={{ color: 'var(--color-primary-light)', marginBottom: '8px' }} />
             <span className="stat-card-label" style={{ fontWeight: 600, color: 'var(--color-text)' }}>Manage Users →</span>
           </Link>
         </div>

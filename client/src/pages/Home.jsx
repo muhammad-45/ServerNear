@@ -6,7 +6,6 @@ import './Home.css';
 
 const Home = () => {
   const [categories, setCategories] = useState([]);
-  const [stats, setStats] = useState({ providers: 0, services: 0, cities: 7 });
 
   useEffect(() => {
     fetchCategories();
@@ -30,25 +29,22 @@ const Home = () => {
           <div className="hero-shape hero-shape-2"></div>
           <div className="hero-shape hero-shape-3"></div>
         </div>
-        
+
         <div className="container hero-container">
           <div className="hero-content animate-fade-in-up">
-            <span className="hero-badge">
-              <FiShield size={14} /> Trusted Service Providers
-            </span>
             <h1 className="hero-title">
               Find Expert Local Services <span className="hero-highlight">Near You</span>
             </h1>
             <p className="hero-subtitle">
-              Connect with verified electricians, plumbers, tutors, mechanics, and more 
+              Connect with verified electricians, plumbers, tutors, mechanics, and more
               in Abbottabad, Islamabad, and across Pakistan.
             </p>
-            
+
             <div className="hero-search glass">
               <FiSearch className="hero-search-icon" />
-              <input 
-                type="text" 
-                placeholder="What service are you looking for?" 
+              <input
+                type="text"
+                placeholder="What service are you looking for?"
                 className="hero-search-input"
                 id="hero-search-input"
               />
@@ -94,12 +90,12 @@ const Home = () => {
             <h2>Browse Service Categories</h2>
             <p className="section-subtitle">Find the right professional for every need</p>
           </div>
-          
+
           <div className="categories-grid stagger-children">
             {categories.map((cat) => (
-              <Link 
-                to={`/services?category=${cat._id}`} 
-                key={cat._id} 
+              <Link
+                to={`/services?category=${cat._id}`}
+                key={cat._id}
                 className="category-card animate-fade-in-up"
                 id={`category-${cat._id}`}
               >
@@ -126,7 +122,6 @@ const Home = () => {
 
           <div className="steps-grid">
             <div className="step-card animate-fade-in-up">
-              <div className="step-number">1</div>
               <div className="step-icon-wrap">
                 <FiSearch size={28} />
               </div>
@@ -137,7 +132,6 @@ const Home = () => {
             <div className="step-connector"></div>
 
             <div className="step-card animate-fade-in-up">
-              <div className="step-number">2</div>
               <div className="step-icon-wrap">
                 <FiCalendar size={28} />
               </div>
@@ -148,7 +142,6 @@ const Home = () => {
             <div className="step-connector"></div>
 
             <div className="step-card animate-fade-in-up">
-              <div className="step-number">3</div>
               <div className="step-icon-wrap">
                 <FiCheckCircle size={28} />
               </div>
@@ -224,7 +217,7 @@ const Home = () => {
               <Link to="/register" className="btn btn-primary btn-lg">
                 Sign Up as Customer <FiArrowRight />
               </Link>
-              <Link to="/register" className="btn btn-secondary btn-lg" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }}>
+              <Link to="/register" className="btn btn-secondary btn-lg" style={{ color: 'grey', borderColor: 'rgba(255,255,255,0.3)' }}>
                 Become a Provider
               </Link>
             </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import API from '../utils/api';
 import Loader from '../components/Loader';
-import { FiPlus, FiEdit2, FiTrash2, FiCalendar, FiDollarSign, FiPackage, FiCheckCircle } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiPackage } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import './Dashboard.css';
 
@@ -57,7 +57,7 @@ const ProviderDashboard = () => {
         await API.post('/services', payload);
         toast.success('Service created!');
       }
-      
+
       setShowForm(false);
       setEditingService(null);
       setFormData({ title: '', description: '', category: '', price: '', priceType: 'fixed', city: '', areas: '' });
@@ -119,30 +119,18 @@ const ProviderDashboard = () => {
         {/* Stats */}
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(42,157,143,0.1)', color: '#2A9D8F' }}>
-              <FiPackage />
-            </div>
             <span className="stat-card-value">{services.length}</span>
             <span className="stat-card-label">My Services</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(233,196,106,0.15)', color: '#E9C46A' }}>
-              <FiCalendar />
-            </div>
             <span className="stat-card-value">{pendingBookings.length}</span>
             <span className="stat-card-label">Pending Requests</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(69,123,157,0.1)', color: '#457B9D' }}>
-              <FiCheckCircle />
-            </div>
             <span className="stat-card-value">{activeBookings.length}</span>
             <span className="stat-card-label">Active Jobs</span>
           </div>
           <div className="stat-card">
-            <div className="stat-card-icon" style={{ background: 'rgba(38,70,83,0.08)', color: '#264653' }}>
-              <FiDollarSign />
-            </div>
             <span className="stat-card-value">{completedBookings.length}</span>
             <span className="stat-card-label">Completed</span>
           </div>
