@@ -337,12 +337,14 @@ input, textarea, select {
   background: var(--color-white) !important;
   border: 1px solid var(--color-border) !important;
   border-radius: var(--radius-md) !important;
+  text-decoration: none !important;
 }
 
 .category-card:hover, .feature-card:hover {
   transform: none !important;
   box-shadow: none !important;
   border-color: var(--color-primary-light) !important;
+  text-decoration: none !important;
 }
 
 .step-card {
@@ -408,4 +410,8 @@ input, textarea, select {
 .empty-state {
   border: 1px dashed var(--color-border) !important;
   border-radius: var(--radius-md) !important;
+}
+
+.navbar-brand:hover, .stat-card:hover, .dropdown-item:hover {
+  text-decoration: none !important;
 }
