@@ -23,15 +23,15 @@ exports.register = async (req, res) => {
     // Check if user exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'An account with this email already exists.' 
+      return res.status(400).json({
+        success: false,
+        message: 'An account with this email already exists.'
       });
     }
 
     // Create user
     const userData = { name, email, password, phone, city };
-    
+
     if (role === 'provider' || role === 'customer') {
       userData.role = role;
     }
@@ -83,18 +83,18 @@ exports.login = async (req, res) => {
     // Find user and include password
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'Invalid email or password.' 
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid email or password.'
       });
     }
 
     // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'Invalid email or password.' 
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid email or password.'
       });
     }
 
@@ -138,7 +138,7 @@ exports.getMe = async (req, res) => {
 exports.updateMe = async (req, res) => {
   try {
     const { name, phone, city, avatar, providerInfo } = req.body;
-    
+
     const updateData = {};
     if (name) updateData.name = name;
     if (phone) updateData.phone = phone;
@@ -153,14 +153,50 @@ exports.updateMe = async (req, res) => {
       updateData['providerInfo.hourlyRate'] = providerInfo.hourlyRate || req.user.providerInfo.hourlyRate;
     }
 
-    const user = await User.findByIdAndUpdate(req.user._id, updateData, { 
-      new: true, 
-      runValidators: true 
+    const user = await User.findByIdAndUpdate(req.user._id, updateData, {
+      new: true,
+      runValidators: true
     }).populate('providerInfo.category', 'name icon');
 
     res.json({ success: true, user, message: 'Profile updated successfully!' });
   } catch (error) {
     console.error('UpdateMe error:', error);
     res.status(500).json({ success: false, message: 'Server error.' });
+  }
+};
+
+// @desc    Change password
+// @route   PUT /api/auth/change-password
+exports.changePassword = async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array()
+      });
+    }
+    const { currentPassword, newPassword } = req.body;
+    const user = await User.findById(req.user._id).select('+password');
+
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid current password'
+      });
+    }
+    user.password = newPassword;
+    await user.save();
+    res.json({
+      success: true,
+      message: 'Password changed successfully.'
+    });
+  } catch (error) {
+    console.error('Change password error', error);
+    res.status(500).json({
+      success: false,
+      message: 'We got an error during this operation.'
+    });
   }
 };

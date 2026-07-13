@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiBriefcase, FiAward, FiDollarSign, FiSave } from 'react-icons/fi';
+import { FiUser, FiMail, FiPhone, FiMapPin, FiBriefcase, FiAward, FiDollarSign, FiSave, FiLock } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import API from '../utils/api';
 import Loader from '../components/Loader';
@@ -21,6 +21,12 @@ const Profile = () => {
     hourlyRate: '',
     skills: ''
   });
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [passwordLoading, setPasswordLoading] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -82,6 +88,33 @@ const Profile = () => {
       toast.error(error.response?.data?.message || 'Failed to update profile.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      return toast.error('New passwords do not match.');
+    }
+    setPasswordLoading(true);
+
+    try {
+      const { data } = await API.put('/auth/change-password', {
+        currentPassword: passwordData.currentPassword,
+        newPassword: passwordData.newPassword
+      });
+      if (data.success) {
+        toast.success(data.message || 'Password changed successfully!');
+        setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to change password.');
+    } finally {
+      setPasswordLoading(false);
     }
   };
 
@@ -181,6 +214,61 @@ const Profile = () => {
             </button>
           </div>
         </form>
+
+        {/* Change Password Section */}
+        <div style={{ marginTop: 'var(--space-8)', paddingTop: 'var(--space-6)', borderTop: '1px solid var(--color-border)' }}>
+          <h3 style={{ marginBottom: 'var(--space-4)', display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+            <FiLock size={18} /> Change Password
+          </h3>
+          <form onSubmit={handlePasswordSubmit} className="auth-form" id="password-form">
+            <div className="form-group">
+              <label className="form-label"><FiLock size={16} /> Current Password</label>
+              <input
+                type="password"
+                name="currentPassword"
+                value={passwordData.currentPassword}
+                onChange={handlePasswordChange}
+                required
+                className="form-input"
+                id="password-current"
+                placeholder="Enter current password"
+              />
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label className="form-label"><FiLock size={16} /> New Password</label>
+                <input
+                  type="password"
+                  name="newPassword"
+                  value={passwordData.newPassword}
+                  onChange={handlePasswordChange}
+                  required
+                  className="form-input"
+                  id="password-new"
+                  placeholder="Enter new password"
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label"><FiLock size={16} /> Confirm New Password</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={passwordData.confirmPassword}
+                  onChange={handlePasswordChange}
+                  required
+                  className="form-input"
+                  id="password-confirm"
+                  placeholder="Confirm new password"
+                />
+              </div>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 'var(--space-4)' }}>
+              <button type="submit" className="btn btn-primary" disabled={passwordLoading} id="password-submit">
+                {passwordLoading ? 'Updating Password...' : 'Change Password'}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

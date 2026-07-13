@@ -152,61 +152,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="section why-us-section" id="why-us">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">Why ServeNear</span>
-            <h2>Your Trusted Service Partner</h2>
-          </div>
-
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FiShield size={24} />
-              </div>
-              <h4>Verified Providers</h4>
-              <p>Every provider goes through admin verification before appearing on the platform.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FiStar size={24} />
-              </div>
-              <h4>Ratings & Reviews</h4>
-              <p>Real customer ratings help you choose the best service provider with confidence.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FiMapPin size={24} />
-              </div>
-              <h4>Local Coverage</h4>
-              <p>Serving Abbottabad, Islamabad, and expanding across all major cities of Pakistan.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FiClock size={24} />
-              </div>
-              <h4>Easy Booking</h4>
-              <p>Book in minutes. Pick your date, time, and address — we handle the rest.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <FiUsers size={24} />
-              </div>
-              <h4>For Everyone</h4>
-              <p>Whether you need a plumber, tutor, or beautician — we have you covered.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon feature-icon-accent">
-                💰
-              </div>
-              <h4>Fair Pricing</h4>
-              <p>Transparent pricing with no hidden charges. Compare rates before you book.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="section cta-section" id="cta-section">
         <div className="container">

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { FiMapPin, FiPhone, FiMail, FiHeart } from 'react-icons/fi';
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import logo from '../assets/logo.svg';
 import './Footer.css';
 
@@ -12,15 +11,9 @@ const Footer = () => {
           <div className="footer-brand">
             <img src={logo} alt="ServeNear" className="footer-logo" />
             <p className="footer-desc">
-              Connecting you with trusted local service providers across Pakistan. 
+              Connecting you with trusted local service providers across Pakistan.
               Quality services at your doorstep.
             </p>
-            <div className="footer-socials">
-              <a href="#" className="social-link" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="#" className="social-link" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" className="social-link" aria-label="Twitter"><FaTwitter /></a>
-              <a href="#" className="social-link" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            </div>
           </div>
 
           <div className="footer-col">
@@ -58,7 +51,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} ServeNear. Made with <FiHeart className="heart-icon" /> in Pakistan.</p>
+          <p>© {new Date().getFullYear()} ServeNear. Made by MSA, JJ, AK, AN</p>
         </div>
       </div>
     </footer>
